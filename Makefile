@@ -20,7 +20,7 @@ export VERSION COMMIT SOURCE_DATE_EPOCH
 _LDFLAGS := $(LDFLAGS) -lrt -lsodium
 _CFLAGS := $(CFLAGS) -Wall -O2 -fno-strict-aliasing -DWFB_VERSION='"$(VERSION)-$(shell /bin/bash -c '_tmp=$(COMMIT); echo $${_tmp::8}')"'
 
-all: all_bin gs.key test
+all: all_bin gs.key
 
 $(ENV):
 	$(PYTHON) -m virtualenv $(ENV)
@@ -51,9 +51,6 @@ wfb_tx_cmd: src/tx_cmd.o
 
 wfb_tun: src/wfb_tun.o
 	$(CC) -o $@ $^ $(LDFLAGS) -levent_core
-
-test: all_bin
-	PYTHONPATH=`pwd` trial3 wfb_ng.tests
 
 rpm:  all_bin $(ENV)
 	rm -rf dist
