@@ -26,7 +26,7 @@ with open('wfb_ng/conf/site.cfg', 'w') as fd:
     fd.write("# Don't make any changes here, use local.cfg instead!\n\n[common]\nversion = %r\ncommit = %r\n" % (version, commit))
 
 def _long_description():
-    with open('README.md', encoding='utf-8') as fd:
+    with open('README_ORIGINAL.md', encoding='utf-8') as fd:
         start = False
         for line in fd:
             if line.startswith('Main features:'):
