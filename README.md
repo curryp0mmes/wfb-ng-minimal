@@ -10,15 +10,16 @@ For now to make and run do the following steps:
 make
 
 
+# For Air
+
+./air/libcamera.sh &
+./air/tx.sh &
+#will stream the raspi camera over port 5602 to wfb_tx which transmits it to a set frequency
+
+
 # For Ground
 
-./scripts/rx_standalone.sh
-#there is now a udp stream on port 5600 waiting to be viewed
-
-
-# For air
-
-./scripts/tx_standalone.sh
+./ground/rx.sh
 #this will send your udp rtp stream on port 5600 to ground
 
 ```
