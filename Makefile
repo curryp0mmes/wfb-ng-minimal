@@ -1,9 +1,8 @@
 ARCH ?= $(shell uname -i)
-PYTHON ?= /usr/bin/python3
 
 ifneq ("$(wildcard .git)","")
     COMMIT ?= $(or $(shell git rev-parse HEAD), local)
-    VERSION ?= $(or $(shell $(PYTHON) ./version.py $(shell git show -s --format="%ct" $(shell git rev-parse HEAD)) $(shell git rev-parse --abbrev-ref HEAD)), 0.0.0)
+    VERSION ?= 0.1
     SOURCE_DATE_EPOCH ?= $(or $(shell git show -s --format="%ct" $(shell git rev-parse HEAD)), $(shell date "+%s"))
 else
     COMMIT ?= local
@@ -21,10 +20,6 @@ _LDFLAGS := $(LDFLAGS) -lrt -lsodium
 _CFLAGS := $(CFLAGS) -Wall -O2 -fno-strict-aliasing -DWFB_VERSION='"$(VERSION)-$(shell /bin/bash -c '_tmp=$(COMMIT); echo $${_tmp::8}')"'
 
 all: all_bin gs.key
-
-$(ENV):
-	$(PYTHON) -m virtualenv $(ENV)
-	$$(PATH=$(ENV)/bin:$(ENV)/local/bin:$(PATH) which pip3) install --upgrade pip setuptools $(STDEB)
 
 all_bin: wfb_rx wfb_tx wfb_keygen wfb_tx_cmd wfb_tun
 
@@ -54,17 +49,6 @@ wfb_tun: src/wfb_tun.o
 
 rpm:  all_bin $(ENV)
 	rm -rf dist
-	$(PYTHON) ./setup.py bdist_rpm --force-arch $(ARCH)
-	rm -rf wfb_ng.egg-info/
-
-deb:  all_bin $(ENV)
-	rm -rf deb_dist
-	$$(PATH=$(ENV)/bin:$(ENV)/local/bin:$(PATH) which python3) ./setup.py --command-packages=stdeb.command bdist_deb
-	rm -rf wfb_ng.egg-info/ wfb-ng-$(VERSION).tar.gz
-
-bdist: all_bin
-	rm -rf dist
-	$(PYTHON) ./setup.py bdist --plat-name linux-$(ARCH)
 	rm -rf wfb_ng.egg-info/
 
 check:
