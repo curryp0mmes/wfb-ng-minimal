@@ -12,9 +12,8 @@ do
    nmcli device set "$WLAN" managed no
    ip link set "$WLAN" down
    iw dev "$WLAN" set monitor otherbss
-   iw reg set BO
    ip link set "$WLAN" up
-
+#   iw dev "$WLAN" set txpower fixed -3000
   case $BAND in
     "5G")
         echo "Setting $WLAN to channel $CHANNEL5G"
@@ -32,4 +31,4 @@ do
 done
 
 # No UI, video only
-~/wfb-ng-minimal/wfb_rx -p 0 -u 5600 -K ~/wfb-ng-minimal/ground/gs.key $WLANS
+/home/pi/wfb-ng-minimal/wfb_rx -p 0 -u 5600 -R 2097152 -K /home/pi/wfb-ng-minimal/ground/gs.key $WLANS
