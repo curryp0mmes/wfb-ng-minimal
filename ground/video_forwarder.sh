@@ -1,0 +1,1 @@
+gst-launch-1.0 udpsrc port=5600 ! udpsink host=192.168.172.55 port=5600
