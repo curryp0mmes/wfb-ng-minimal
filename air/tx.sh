@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WLAN=wlan1
+WLAN=wlan0
 
 BAND="5G"
 #BAND="2G"
@@ -13,6 +13,7 @@ ip link set "$WLAN" down
 iw dev "$WLAN" set monitor otherbss
 iw reg set BO
 ip link set "$WLAN" up
+iw dev "$WLAN" set txpower fixed -2700
 
 case $BAND in
   "5G")
@@ -30,4 +31,4 @@ case $BAND in
 esac
 
 # Video TX
-./wfb_tx -p 0 -u 5600 -K air/drone.key "$WLAN"
+./wfb_tx -f 'data' -p 0 -u 5600 -K air/drone.key -B 20 -G "long" -S 1 -L 1 -M 1 -k 8 -n 12 -T 0 -F 0 -C 0 -R 2097152 "$WLAN"
