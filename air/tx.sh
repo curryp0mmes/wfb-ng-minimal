@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WLAN=wlan1
+WLAN=wlan0
 
 BAND="5G"
 #BAND="2G"
