@@ -19,7 +19,7 @@ export VERSION COMMIT SOURCE_DATE_EPOCH
 _LDFLAGS := $(LDFLAGS) -lrt -lsodium
 _CFLAGS := $(CFLAGS) -Wall -O2 -fno-strict-aliasing -DWFB_VERSION='"$(VERSION)-$(shell /bin/bash -c '_tmp=$(COMMIT); echo $${_tmp::8}')"'
 
-all: all_bin gs.key
+all: all_bin ground/gs.key
 
 all_bin: wfb_rx wfb_tx wfb_keygen wfb_tx_cmd wfb_tun
 

@@ -1,13 +1,5 @@
 #!/bin/bash
 
-####
-#### WARNING!!!
-#### This script is depricated and **not supported** by author!
-#### I leave it only for reference for **developers**.
-#### Use python services instead.
-####
-
-
 WLAN=wlan1
 
 BAND="5G"
@@ -38,4 +30,4 @@ case $BAND in
 esac
 
 # Video TX
-./wfb_tx -p 0 -u 5602 -K drone.key "$WLAN"
+./wfb_tx -p 0 -u 5600 -K air/drone.key "$WLAN"
