@@ -30,4 +30,4 @@ case $BAND in
 esac
 
 # Video TX
-./wfb_tx -p 0 -u 5600 -K air/drone.key "$WLAN"
+~/wfb-ng-minimal/wfb_tx -p 0 -u 5600 -K ~/wfb-ng-minimal/air/drone.key "$WLAN"
