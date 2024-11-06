@@ -31,8 +31,4 @@ case $BAND in
 esac
 
 # Video TX
-<<<<<<< HEAD
-./wfb_tx -f 'data' -p 0 -u 5600 -K air/drone.key -B 20 -G "long" -S 1 -L 1 -M 1 -k 8 -n 12 -T 0 -F 0 -C 0 -R 2097152 "$WLAN"
-=======
-~/wfb-ng-minimal/wfb_tx -p 0 -u 5600 -K ~/wfb-ng-minimal/air/drone.key "$WLAN"
->>>>>>> d0a386711ff1cd52631ddbe2f2c18327aafb8f61
+~/wfb-ng-minimal/wfb_tx -f 'data' -p 0 -u 5600 -K air/drone.key -B 20 -G "long" -S 1 -L 1 -M 1 -k 8 -n 12 -T 0 -F 0 -C 0 -R 2097152 "$WLAN"

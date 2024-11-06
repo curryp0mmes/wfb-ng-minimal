@@ -31,4 +31,4 @@ do
 done
 
 # No UI, video only
-/home/pi/wfb-ng-minimal/wfb_rx -p 0 -u 5600 -R 2097152 -K /home/pi/wfb-ng-minimal/ground/gs.key $WLANS
+~/wfb-ng-minimal/wfb_rx -p 0 -u 5600 -R 2097152 -K /home/pi/wfb-ng-minimal/ground/gs.key $WLANS
